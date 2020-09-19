@@ -53,7 +53,7 @@ $(function () {
                     if (data.success) {
                         location.href = "/tmall";
                     } else {
-                        styleUtil.errorShow($("#error_message_p"), "用户名和密码错误！");
+                        styleUtil.errorShow($("#error_message_p"), "用户名或密码错误！");
                     }
                 },
                 error: function (data) {
