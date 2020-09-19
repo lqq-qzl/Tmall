@@ -1,9 +1,9 @@
-package com.xq.tmall.controller.admin;
+package com.xq.tmall.tmall_2.controller.admin;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import com.xq.tmall.controller.BaseController;
+import com.xq.tmall.tmall_2.controller.BaseController;
 import com.xq.tmall.entity.*;
 import com.xq.tmall.service.*;
 import com.xq.tmall.util.OrderUtil;
@@ -13,7 +13,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
@@ -25,7 +24,7 @@ import java.util.*;
  * 后台管理-产品页
  */
 @Controller
-public class ProductController extends BaseController{
+public class ProductController extends BaseController {
     @Autowired
     private CategoryService categoryService;
     @Autowired

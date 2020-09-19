@@ -1,17 +1,22 @@
-package com.xq.tmall.controller.fore;
+package com.xq.tmall.tmall_2.controller.fore;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import com.xq.tmall.controller.BaseController;
+import com.alipay.api.AlipayApiException;
+import com.alipay.api.AlipayClient;
+import com.alipay.api.domain.AlipayTradePagePayModel;
+import com.alipay.api.request.AlipayTradePagePayRequest;
+import com.xq.tmall.config.alipay.AlipayConfig;
+import com.xq.tmall.tmall_2.controller.BaseController;
 import com.xq.tmall.entity.*;
 import com.xq.tmall.service.*;
+import com.xq.tmall.util.Alipayutil;
 import com.xq.tmall.util.OrderUtil;
 import com.xq.tmall.util.PageUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import javax.annotation.Resource;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -369,11 +374,19 @@ public class ForeOrderController extends BaseController {
         logger.info("转到前台天猫-订单支付页");
         return "fore/productPayPage";
     }
+    @RequestMapping("/re")
+    public String re(){
 
+        return "fore/productPaySuccessPage";
+    }
+    Map map1;
+    HttpSession session1;
+    String order_code1;
     //转到前台天猫-订单支付成功页
+    @ResponseBody
     @RequestMapping(value = "order/pay/success/{order_code}", method = RequestMethod.GET)
     public String goToOrderPaySuccessPage(Map<String, Object> map, HttpSession session,
-                                          @PathVariable("order_code") String order_code) {
+                                          @PathVariable("order_code") String order_code ,HttpServletResponse response) throws AlipayApiException {
         logger.info("检查用户是否登录");
         Object userId = checkUser(session);
         User user;
@@ -438,7 +451,34 @@ public class ForeOrderController extends BaseController {
         map.put("orderTotalPrice", orderTotalPrice);
 
         logger.info("转到前台天猫-订单支付成功页");
-        return "fore/productPaySuccessPage";
+
+        AlipayClient alipayClient = Alipayutil.alipayClient;
+        // 订单模型
+        String productCode = "FAST_INSTANT_TRADE_PAY";
+        AlipayTradePagePayModel model = new AlipayTradePagePayModel();
+        model.setOutTradeNo(String.valueOf(System.currentTimeMillis()));
+
+        model.setTotalAmount(String.valueOf(orderTotalPrice));
+        model.setSubject("支付测试");
+        model.setBody("支付测试，共0.01元");
+        model.setProductCode(productCode);
+
+
+        AlipayTradePagePayRequest pagePayRequest = new AlipayTradePagePayRequest();
+        pagePayRequest.setReturnUrl(AlipayConfig.return_url);
+        pagePayRequest.setNotifyUrl(AlipayConfig.notify_url);
+        pagePayRequest.setBizModel(model);
+        map1=map;
+        order_code1=order_code;
+        session1=session;
+        //请求
+        response.setContentType("text/html;charset=UTF-8");
+        String result = alipayClient.pageExecute(pagePayRequest).getBody();
+        System.out.println(orderTotalPrice);
+        System.out.println(result);
+        System.out.println(map1);
+        System.out.println(order_code1);
+        return result;
     }
 
     //转到前台天猫-订单确认页

@@ -1,7 +1,7 @@
-package com.xq.tmall.controller.fore;
+package com.xq.tmall.tmall_2.controller.fore;
 
 import com.alibaba.fastjson.JSONObject;
-import com.xq.tmall.controller.BaseController;
+import com.xq.tmall.tmall_2.controller.BaseController;
 import com.xq.tmall.entity.Address;
 import com.xq.tmall.entity.User;
 import com.xq.tmall.service.AddressService;
@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
@@ -26,13 +25,12 @@ import java.util.Map;
 import java.util.UUID;
 
 @Controller
-public class ForeUserController extends BaseController{
+public class ForeUserController extends BaseController {
     @Autowired
     private AddressService addressService;
     @Autowired
     private UserService userService;
 
-    //转到前台天猫-用户详情页
     @RequestMapping(value = "userDetails", method = RequestMethod.GET)
     public String goToUserDetail(HttpSession session, Map<String,Object> map){
         logger.info("检查用户是否登录");

@@ -1,7 +1,7 @@
-package com.xq.tmall.controller.fore;
+package com.xq.tmall.tmall_2.controller.fore;
 
 import com.alibaba.fastjson.JSONObject;
-import com.xq.tmall.controller.BaseController;
+import com.xq.tmall.tmall_2.controller.BaseController;
 import com.xq.tmall.entity.*;
 import com.xq.tmall.service.*;
 import com.xq.tmall.util.PageUtil;
@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 import java.io.UnsupportedEncodingException;
 import java.util.Date;

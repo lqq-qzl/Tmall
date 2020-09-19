@@ -1,7 +1,7 @@
-package com.xq.tmall.controller.admin;
+package com.xq.tmall.tmall_2.controller.admin;
 
 import com.alibaba.fastjson.JSONObject;
-import com.xq.tmall.controller.BaseController;
+import com.xq.tmall.tmall_2.controller.BaseController;
 import com.xq.tmall.entity.Admin;
 import com.xq.tmall.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;

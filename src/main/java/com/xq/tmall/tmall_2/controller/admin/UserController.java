@@ -1,9 +1,9 @@
-package com.xq.tmall.controller.admin;
+package com.xq.tmall.tmall_2.controller.admin;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import com.xq.tmall.controller.BaseController;
+import com.xq.tmall.tmall_2.controller.BaseController;
 import com.xq.tmall.entity.Address;
 import com.xq.tmall.entity.Product;
 import com.xq.tmall.entity.ProductOrderItem;
@@ -15,7 +15,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
@@ -27,7 +26,7 @@ import java.util.Stack;
  * 后台管理-用户页
  */
 @Controller
-public class UserController extends BaseController{
+public class UserController extends BaseController {
     @Autowired
     private UserService userService;
     @Autowired

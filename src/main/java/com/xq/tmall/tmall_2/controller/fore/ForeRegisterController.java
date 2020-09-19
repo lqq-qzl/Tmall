@@ -1,7 +1,7 @@
-package com.xq.tmall.controller.fore;
+package com.xq.tmall.tmall_2.controller.fore;
 
 import com.alibaba.fastjson.JSONObject;
-import com.xq.tmall.controller.BaseController;
+import com.xq.tmall.tmall_2.controller.BaseController;
 import com.xq.tmall.entity.Address;
 import com.xq.tmall.entity.User;
 import com.xq.tmall.service.AddressService;
@@ -13,14 +13,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.annotation.Resource;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Map;
 
 @Controller
-public class ForeRegisterController extends BaseController{
+public class ForeRegisterController extends BaseController {
     @Autowired
     private AddressService addressService;
     @Autowired

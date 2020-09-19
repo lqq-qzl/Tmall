@@ -1,7 +1,7 @@
-package com.xq.tmall.controller.fore;
+package com.xq.tmall.tmall_2.controller.fore;
 
 import com.alibaba.fastjson.JSONObject;
-import com.xq.tmall.controller.BaseController;
+import com.xq.tmall.tmall_2.controller.BaseController;
 import com.xq.tmall.entity.Address;
 import com.xq.tmall.service.AddressService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,30 +11,31 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.annotation.Resource;
 import java.util.List;
 
 @Controller
 public class ForeAddressController extends BaseController {
     @Autowired
     private AddressService addressService;
-
-    //根据address_areaId获取地址信息-ajax
     @ResponseBody
     @RequestMapping(value = "address/{areaId}", method = RequestMethod.GET, produces = "application/json;charset=utf-8")
     protected String getAddressByAreaId(@PathVariable String areaId) {
-        JSONObject object = new JSONObject();
+        JSONObject o = new JSONObject();
         logger.info("获取AreaId为{}的地址信息");
         List<Address> addressList = addressService.getList(null, areaId);
         if (addressList == null || addressList.size() <= 0) {
-            object.put("success", false);
-            return object.toJSONString();
+            o.put("success", false);
+            return o.toJSONString();
         }
         logger.info("获取该地址可能的子地址信息");
         List<Address> childAddressList = addressService.getList(null, addressList.get(0).getAddress_areaId());
-        object.put("success", true);
-        object.put("addressList", addressList);
-        object.put("childAddressList", childAddressList);
-        return object.toJSONString();
+        o.put("success", true);
+        o.put("addressList", addressList);
+        o.put("childAddressList", childAddressList);
+        return o.toJSONString();
+    }
+    @RequestMapping("/")
+    public  String ll(){
+        return "fore/homePage";
     }
 }
