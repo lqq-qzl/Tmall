@@ -24,8 +24,9 @@
                 </c:when>
                 <c:otherwise>
                     <em>Hi，</em>
-                    <a href="${pageContext.request.contextPath}/userDetails" class="userName"
-                       target="_blank">${requestScope.user.user_name}</a>
+                    <a href="${pageContext.request.contextPath}/userDetails" class="userName" target="_blank">
+                            ${requestScope.user.user_name}
+                    </a>
                     <a href="${pageContext.request.contextPath}/login/logout">退出</a>
                 </c:otherwise>
             </c:choose>
@@ -41,7 +42,7 @@
                 </div>
             </li>
             <li class="quick_li_cart">
-                <img src="${pageContext.request.contextPath}/res/images/fore/WebsiteImage/buyCar.png">
+                <img src="${pageContext.request.contextPath}/res/images/fore/WebsiteImage/buyCar.png"/>
                 <a href="${pageContext.request.contextPath}/cart">购物车</a>
             </li>
             <li class="quick_li_menuItem">
@@ -55,10 +56,10 @@
             </li>
             <li class="quick_li_separator"></li>
             <li class="quick_li_mobile">
-                <img src="${pageContext.request.contextPath}/res/images/fore/WebsiteImage/mobile.png">
+                <img src="${pageContext.request.contextPath}/res/images/fore/WebsiteImage/mobile.png"/>
                 <a href="#" title="天猫无线">手机版</a>
                 <div class="quick_qrcode">
-                    <img src="${pageContext.request.contextPath}/res/images/fore/WebsiteImage/qrcode.png">
+                    <img src="${pageContext.request.contextPath}/res/images/fore/WebsiteImage/qrcode.png"/>
                     <b></b>
                 </div>
             </li>

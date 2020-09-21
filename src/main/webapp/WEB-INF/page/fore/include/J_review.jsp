@@ -57,7 +57,9 @@
                         <span>${review.review_createDate}</span>
                     </div>
                 </div>
-                <div class="reviews_author">${review.review_user.user_nickname}</div>
+                <div class="reviews_author">
+                        ${review.review_user.user_nickname}
+                </div>
             </div>
         </c:forEach>
     </div>

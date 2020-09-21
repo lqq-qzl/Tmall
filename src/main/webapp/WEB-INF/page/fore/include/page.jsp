@@ -8,12 +8,14 @@
 <div id="pageDiv">
     <ul>
         <li data-name="firstPage" <c:if test="${!requestScope.pageUtil.isHasPrev()}">class="disabled" </c:if>>
-            <a href="javascript:void(0)" onclick="getPage(0)" aria-label="首页"><span
-                    aria-hidden="true">&laquo;</span></a>
+            <a href="javascript:void(0)" onclick="getPage(0)" aria-label="首页">
+                <span aria-hidden="true">&laquo;</span>
+            </a>
         </li>
         <li data-name="prevPage" <c:if test="${!requestScope.pageUtil.isHasPrev()}">class="disabled" </c:if>>
-            <a href="javascript:void(0)" onclick="getPage(${requestScope.pageUtil.index-1})" aria-label="上一页"><span
-                    aria-hidden="true">&lsaquo;</span></a>
+            <a href="javascript:void(0)" onclick="getPage(${requestScope.pageUtil.index-1})" aria-label="上一页">
+                <span aria-hidden="true">&lsaquo;</span>
+            </a>
         </li>
 
         <c:forEach begin="1" end="${requestScope.pageUtil.getTotalPage()}" varStatus="status">

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "mybatis-3-mapper.dtd">
+<mapper namespace="com.xq.tmall.tmall_1.dao.AddressMapper">
+    <resultMap id="address" type="com.xq.tmall.tmall_1.entity.Address">
+        <id property="address_areaId" column="address_areaId"/>
+        <result property="address_name" column="address_name"/>
+        <association property="address_regionId" javaType="com.xq.tmall.tmall_1.entity.Address">
+            <id property="address_areaId" column="address_regionId"/>
+        </association>
+    </resultMap>
+    <!--新增地址信息-->
+    <insert id="insertOne" parameterType="com.xq.tmall.tmall_1.entity.Address">
+        INSERT address(address_areaId,address_name,address_regionId)
+            VALUES (
+            #{address.address_areaId},
+            #{address.address_name},
+            #{address.address_regionId})
+    </insert>
+    <!--修改地址信息-->
+    <update id="updateOne" parameterType="com.xq.tmall.tmall_1.entity.Address">
+        UPDATE address
+        <set>
+            <if test="address.address_name != null">address_name = #{address.address_name}</if>
+        </set>
+        <where>
+            address_areaId = #{address.address_areaId}
+        </where>
+    </update>
+    <!--根据名称和地址编号查找地质信息-->
+    <select id="select" resultMap="address">
+        SELECT address_areaId,address_name,address_regionId FROM address
+        <where>
+            <if test="address_name != null">
+                address_name LIKE concat('%',#{address_name},'%')
+            </if>
+            <if test="address_regionId != null">
+                and address_regionId = #{address_regionId} and address_areaId != address_regionId
+            </if>
+        </where>
+    </select>
+    <!--根据地址编号查找地址-->
+    <select id="selectOne" resultMap="address" parameterType="string">
+        SELECT address_areaId,address_name,address_regionId FROM address
+        <where>
+            address_areaId = #{address_areaId}
+        </where>
+    </select>
+    <!--根据地址编号查找属于当前地址的地区-->
+    <select id="selectRoot" resultMap="address">
+        SELECT address_areaId,address_name,address_regionId FROM address
+        <where>
+            address_areaId = address_regionId
+        </where>
+    </select>
+</mapper>
