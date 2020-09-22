@@ -12,6 +12,7 @@ import java.util.List;
 
 @Service
 public class AddressServiceImpl implements AddressService {
+
     @Autowired
     private AddressMapper addressMapper;
     public void setAddressMapper(AddressMapper addressMapper) {

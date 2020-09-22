@@ -37,9 +37,9 @@
                 <div class="summary_pay_done">
                     <ul>
                         <li>
-                            收货地址：<span>${requestScope.productOrder.productOrder_detail_address} ${requestScope.productOrder.productOrder_receiver} ${requestScope.productOrder.productOrder_mobile}</span>
+<%--                            收货地址：<span>${requestScope.productOrder.productOrder_detail_address} ${requestScope.productOrder.productOrder_receiver} ${requestScope.productOrder.productOrder_mobile}</span>--%>
                         </li>
-                        <li>实付款：<span><em>￥${requestScope.orderTotalPrice}</em></span></li>
+<%--                        <li>实付款：<span><em>￥${requestScope.orderTotalPrice}</em></span></li>--%>
                     </ul>
                 </div>
             </div>
